@@ -1,4 +1,139 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>centOS7.2搭建nginx环境以及负载均衡 | something worth spreading</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">centOS7.2搭建nginx环境以及负载均衡</h1><a id="logo" href="/.">something worth spreading</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">centOS7.2搭建nginx环境以及负载均衡</h1><div class="post-meta">Aug 3, 2016</div><div class="post-content"><p> 之所以要整理出这篇文章，是因为1是搭建环境的过程中会遇到大大小小各种问题，2是网上目前也没有关于centos7.2搭建nginx环境的问题整理，因此在这里记录。</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        centOS7.2搭建nginx环境以及负载均衡 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/" />
+        </div>
+        <div class="name">
+            <i>urutiana</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        centOS7.2搭建nginx环境以及负载均衡
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2016-08-03 21:16:24</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#centOS" title="centOS">centOS</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#nginx" title="nginx">nginx</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p> 之所以要整理出这篇文章，是因为1是搭建环境的过程中会遇到大大小小各种问题，2是网上目前也没有关于centos7.2搭建nginx环境的问题整理，因此在这里记录。</p>
 <p>前置工作就不赘述了，首先<code>ssh root@115.29.102.81</code> (换成你们自己的公网IP)登陆进入到自己的服务器命令行，之后开始基本的安装：</p>
 <p><strong>1.添加资源</strong></p>
 <p>添加CentOS 7 Nginx yum资源库,打开终端,使用以下命令(没有换行):</p>
@@ -41,4 +176,54 @@
 <p>附1:一个简单的负载均衡的实现:<br>weight默认是1，自己也可以更改。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">upstream mypro &#123;</span><br><span class="line">				ip_hash;</span><br><span class="line">                server 111.13.100.92 weight=2;</span><br><span class="line">                server 183.232.41.1;</span><br><span class="line">                server 42.156.140.7;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">        server &#123;</span><br><span class="line">                listen 8090;</span><br><span class="line">                location / &#123;</span><br><span class="line">                proxy_pass http://mypro;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
 <p>附2:防火墙基本学习：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1、firewalld简介</span><br><span class="line">firewalld是centos7的一大特性，最大的好处有两个：支持动态更新，不用重启服务；第二个就是加入了防火墙的“zone”概念</span><br><span class="line"> </span><br><span class="line">firewalld有图形界面和工具界面，由于我在服务器上使用，图形界面请参照官方文档，本文以字符界面做介绍</span><br><span class="line"> </span><br><span class="line">firewalld的字符界面管理工具是 firewall-cmd </span><br><span class="line"> </span><br><span class="line">firewalld默认配置文件有两个：/usr/lib/firewalld/ （系统配置，尽量不要修改）和 /etc/firewalld/ （用户配置地址）</span><br><span class="line"> </span><br><span class="line">zone概念：</span><br><span class="line">硬件防火墙默认一般有三个区，firewalld引入这一概念系统默认存在以下区域（根据文档自己理解，如果有误请指正）：</span><br><span class="line">drop：默认丢弃所有包</span><br><span class="line">block：拒绝所有外部连接，允许内部发起的连接</span><br><span class="line">public：指定外部连接可以进入</span><br><span class="line">external：这个不太明白，功能上和上面相同，允许指定的外部连接</span><br><span class="line">dmz：和硬件防火墙一样，受限制的公共连接可以进入</span><br><span class="line">work：工作区，概念和workgoup一样，也是指定的外部连接允许</span><br><span class="line">home：类似家庭组</span><br><span class="line">internal：信任所有连接</span><br><span class="line">对防火墙不算太熟悉，还没想明白public、external、dmz、work、home从功能上都需要自定义允许连接，具体使用上的区别还需高人指点</span><br><span class="line"> </span><br><span class="line">2、安装firewalld</span><br><span class="line">root执行 # yum install firewalld firewall-config</span><br><span class="line"> </span><br><span class="line">3、运行、停止、禁用firewalld</span><br><span class="line">启动：# systemctl start  firewalld</span><br><span class="line">查看状态：# systemctl status firewalld 或者 firewall-cmd --state</span><br><span class="line">停止：# systemctl disable firewalld</span><br><span class="line">禁用：# systemctl stop firewalld</span><br><span class="line"> </span><br><span class="line">4、配置firewalld</span><br><span class="line">查看版本：$ firewall-cmd --version</span><br><span class="line">查看帮助：$ firewall-cmd --help</span><br><span class="line">查看设置：</span><br><span class="line">                显示状态：$ firewall-cmd --state</span><br><span class="line">                查看区域信息: $ firewall-cmd --get-active-zones</span><br><span class="line">                查看指定接口所属区域：$ firewall-cmd --get-zone-of-interface=eth0</span><br><span class="line">拒绝所有包：# firewall-cmd --panic-on</span><br><span class="line">取消拒绝状态：# firewall-cmd --panic-off</span><br><span class="line">查看是否拒绝：$ firewall-cmd --query-panic</span><br><span class="line"> </span><br><span class="line">更新防火墙规则：# firewall-cmd --reload</span><br><span class="line">                            # firewall-cmd --complete-reload</span><br><span class="line">    两者的区别就是第一个无需断开连接，就是firewalld特性之一动态添加规则，第二个需要断开连接，类似重启服务</span><br><span class="line"> </span><br><span class="line">将接口添加到区域，默认接口都在public</span><br><span class="line"># firewall-cmd --zone=public --add-interface=eth0</span><br><span class="line">永久生效再加上 --permanent 然后reload防火墙</span><br><span class="line"> </span><br><span class="line">设置默认接口区域</span><br><span class="line"># firewall-cmd --set-default-zone=public</span><br><span class="line">立即生效无需重启</span><br><span class="line"> </span><br><span class="line">打开端口（貌似这个才最常用）</span><br><span class="line">查看所有打开的端口：</span><br><span class="line"># firewall-cmd --zone=dmz --list-ports</span><br><span class="line">加入一个端口到区域：</span><br><span class="line"># firewall-cmd --zone=dmz --add-port=8080/tcp</span><br><span class="line">若要永久生效方法同上</span><br><span class="line"> </span><br><span class="line">打开一个服务，类似于将端口可视化，服务需要在配置文件中添加，/etc/firewalld 目录下有services文件夹，这个不详细说了，详情参考文档</span><br><span class="line"># firewall-cmd --zone=work --add-service=smtp</span><br><span class="line"> </span><br><span class="line">移除服务</span><br><span class="line"># firewall-cmd --zone=work --remove-service=smtp</span><br><span class="line"> </span><br><span class="line">还有端口转发功能、自定义复杂规则功能、lockdown，由于还没用到，以后再学习</span><br></pre></td></tr></table></figure>
-</div><div class="tags"><a href="/tags/centOS/">centOS</a><a href="/tags/nginx/">nginx</a></div><div class="post-nav"><a class="pre" href="/2016/08/08/腾讯云北美服务器搭建ShadowSocks代理/">腾讯云北美服务器搭建ShadowSocks代理</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/PWA/" style="font-size: 15px;">PWA</a> <a href="/tags/centOS/" style="font-size: 15px;">centOS</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/前端框架/" style="font-size: 15px;">前端框架</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/MVVM/" style="font-size: 15px;">MVVM</a> <a href="/tags/性能优化/" style="font-size: 15px;">性能优化</a> <a href="/tags/ShadowSocks/" style="font-size: 15px;">ShadowSocks</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/十条编写优化的JavaScript代码的建议/">十条编写优化的 JavaScript 代码的建议</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/浅谈前端中的二进制数据类型/">浅谈前端中的二进制数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/Linux服务器初始化设置用户和ssh公私钥登陆/">Linux服务器初始化设置用户和ssh公私钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/dva源码解读/">dva源码解读</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/09/构建利用Proxy和Reflect实现双向数据绑定的微框架/">构建利用Proxy和Reflect实现双向数据绑定的微框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/11/PWA实践-serviceWorker生命周期、请求代理与通信/">[PWA实践]serviceWorker生命周期、请求代理与通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/15/CentOS安装node8-x版本/">CentOS安装node8.x版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/31/深入浏览器web渲染与优化-续/">深入浏览器web渲染与优化-续</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/深入浏览器web渲染与优化/">深入浏览器web渲染与优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/JS的静态作用域、子程序引用环境与参数传递类型/">JS的静态作用域、子程序引用环境与参数传递类型</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">something worth spreading.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
