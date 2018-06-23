@@ -1,4 +1,136 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>构建利用Proxy和Reflect实现双向数据绑定的微框架 | something worth spreading</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">构建利用Proxy和Reflect实现双向数据绑定的微框架</h1><a id="logo" href="/.">something worth spreading</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">构建利用Proxy和Reflect实现双向数据绑定的微框架</h1><div class="post-meta">Apr 9, 2018</div><div class="post-content"><blockquote>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        构建利用Proxy和Reflect实现双向数据绑定的微框架 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/" />
+        </div>
+        <div class="name">
+            <i>urutiana</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#综述"><span class="toc-text">综述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码分析"><span class="toc-text">代码分析</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        构建利用Proxy和Reflect实现双向数据绑定的微框架
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-04-09 14:40:44</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#MVVM" title="MVVM">MVVM</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
 <p>写在前面：这篇文章讲述了如何利用Proxy和Reflect实现双向数据绑定，个人系Vue早期玩家，写这个小框架的时候也没有参考Vue等源代码，之前了解过其他实现，但没有直接参考其他代码，如有雷同，纯属巧合。</p>
 </blockquote>
 <p>代码下载地址：<a href="https://github.com/aircloud/Polar.js" target="_blank" rel="noopener">这里下载</a></p>
@@ -44,4 +176,54 @@
 <p>一起学习，一起提高，做技术应当是直接的，有问题欢迎指出～</p>
 <hr>
 <p>最后说的第三点：是自己还是一个学生，做这些内容也仅仅是出于兴趣，因为找暑期实习比较艰难，在等待鹅厂面试间隙写的这个程序，压压惊(然而并没有消息)。</p>
-</div><div class="tags"><a href="/tags/MVVM/">MVVM</a></div><div class="post-nav"><a class="pre" href="/2018/04/11/dva源码解读/">dva源码解读</a><a class="next" href="/2018/02/11/PWA实践-serviceWorker生命周期、请求代理与通信/">[PWA实践]serviceWorker生命周期、请求代理与通信</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/PWA/" style="font-size: 15px;">PWA</a> <a href="/tags/centOS/" style="font-size: 15px;">centOS</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/前端框架/" style="font-size: 15px;">前端框架</a> <a href="/tags/MVVM/" style="font-size: 15px;">MVVM</a> <a href="/tags/性能优化/" style="font-size: 15px;">性能优化</a> <a href="/tags/ShadowSocks/" style="font-size: 15px;">ShadowSocks</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/十条编写优化的JavaScript代码的建议/">十条编写优化的 JavaScript 代码的建议</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/浅谈前端中的二进制数据类型/">浅谈前端中的二进制数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/Linux服务器初始化设置用户和ssh公私钥登陆/">Linux服务器初始化设置用户和ssh公私钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/11/dva源码解读/">dva源码解读</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/09/构建利用Proxy和Reflect实现双向数据绑定的微框架/">构建利用Proxy和Reflect实现双向数据绑定的微框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/11/PWA实践-serviceWorker生命周期、请求代理与通信/">[PWA实践]serviceWorker生命周期、请求代理与通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/15/CentOS安装node8-x版本/">CentOS安装node8.x版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/31/深入浏览器web渲染与优化-续/">深入浏览器web渲染与优化-续</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/深入浏览器web渲染与优化/">深入浏览器web渲染与优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/JS的静态作用域、子程序引用环境与参数传递类型/">JS的静态作用域、子程序引用环境与参数传递类型</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">something worth spreading.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
